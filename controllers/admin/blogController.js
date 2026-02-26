@@ -117,9 +117,7 @@ const addBlog = async (req, res) => {
 
       // ✅ OPTIMIZE BASE64 IMAGES IN CONTENT
       if (formData.content.includes('data:image')) {
-        console.log('🔄 Optimizing base64 images in blog content...');
         formData.content = await extractAndUploadBase64Images(formData.content);
-        console.log('✅ Blog content optimized');
       }
     }
 
@@ -185,7 +183,6 @@ const updateBlog = async (req, res) => {
     let formData = req.body;
 
 
-    console.log("🔹 Received update data:", req.body);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw Error("Invalid ID!!!");
@@ -271,7 +268,6 @@ const updateBlog = async (req, res) => {
         .trim();
     }
 
-    console.log("✅ Final update data:", updatedData);
 
     // ✅ Save to DB
     const updatedBlog = await Blog.findByIdAndUpdate(
