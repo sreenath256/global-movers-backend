@@ -8,9 +8,8 @@ const createToken = (_id) => {
 
 const cookieConfig = {
   sameSite: "none", // in order to response to both first-party and cross-site requests
-  secure: "auto", // it should set automatically to secure if is https.
+  secure: "true",
   httpOnly: true,
-  maxAge: 1000 * 60 * 60 * 24,
 };
 
 // To get user data on initial page load.
